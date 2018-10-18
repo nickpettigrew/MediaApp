@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "MediaApp.API"
+		},
+		{
+			"path": "MediaApp-SPA"
+		}
+	],
+	"settings": {}
+}
