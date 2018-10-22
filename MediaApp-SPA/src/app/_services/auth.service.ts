@@ -20,5 +20,9 @@ login(model: any) {
         }
       })
     );
-}
+  }
+
+  regsiter(model: any) {
+    return this.httP.post(this.baseUrl + 'register', model);
+  }
 }
