@@ -18,6 +18,7 @@ namespace MediaApp.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
+        // private readonly IMapper _mapper;
         public AuthController(IAuthRepository repo, IConfiguration config)
         {
             _config = config;
@@ -31,7 +32,9 @@ namespace MediaApp.API.Controllers
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
             if (await _repo.UserExists(userForRegisterDto.Username))
-                return BadRequest("Username Already Exists");
+            {
+                return BadRequest("Username Already Exists");            
+            }
 
             var userToCreate = new User
             {
@@ -48,27 +51,34 @@ namespace MediaApp.API.Controllers
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
+            {
                 return Unauthorized();
+            }
 
+            //claims to add to JWT token
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.Username)
             };
 
+            //Create Key
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
 
+            //use above key to create credentials by hashing
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
-            var tokenDescriptor = new SecurityTokenDescriptor
+            var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = creds
             };
 
+            //create handler for above info
             var tokenHandler = new JwtSecurityTokenHandler();
 
+            //create toekn by passing descriptor into handler
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return Ok(new {
