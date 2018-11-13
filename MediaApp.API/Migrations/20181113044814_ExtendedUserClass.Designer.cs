@@ -3,14 +3,16 @@ using System;
 using MediaApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MediaApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20181113044814_ExtendedUserClass")]
+    partial class ExtendedUserClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,7 +63,7 @@ namespace MediaApp.API.Migrations
 
                     b.Property<string>("Summary");
 
-                    b.Property<string>("UserName");
+                    b.Property<string>("Username");
 
                     b.HasKey("Id");
 
@@ -93,11 +95,7 @@ namespace MediaApp.API.Migrations
 
                     b.Property<string>("Url");
 
-<<<<<<< HEAD
-                    b.Property<int>("UserId");
-=======
                     b.Property<int?>("UserId");
->>>>>>> dee768692accf2ecb10ccfe68852ce0226940bbe
 
                     b.HasKey("ID");
 
@@ -106,14 +104,6 @@ namespace MediaApp.API.Migrations
                     b.ToTable("Videos");
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("MediaApp.API.Models.Video", b =>
-                {
-                    b.HasOne("MediaApp.API.Models.User", "User")
-                        .WithMany("Videos")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-=======
             modelBuilder.Entity("MediaApp.API.Models.Photo", b =>
                 {
                     b.HasOne("MediaApp.API.Models.User")
@@ -126,7 +116,6 @@ namespace MediaApp.API.Migrations
                     b.HasOne("MediaApp.API.Models.User")
                         .WithMany("Videos")
                         .HasForeignKey("UserId");
->>>>>>> dee768692accf2ecb10ccfe68852ce0226940bbe
                 });
 #pragma warning restore 612, 618
         }
