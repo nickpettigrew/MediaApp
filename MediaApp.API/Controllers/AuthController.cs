@@ -18,7 +18,6 @@ namespace MediaApp.API.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
-        // private readonly IMapper _mapper;
         public AuthController(IAuthRepository repo, IConfiguration config)
         {
             _config = config;
@@ -32,9 +31,7 @@ namespace MediaApp.API.Controllers
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
             if (await _repo.UserExists(userForRegisterDto.Username))
-            {
                 return BadRequest("Username Already Exists");            
-            }
 
             var userToCreate = new User
             {
@@ -51,9 +48,7 @@ namespace MediaApp.API.Controllers
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
-            {
                 return Unauthorized();
-            }
 
             //claims to add to JWT token
             var claims = new[]
@@ -63,7 +58,8 @@ namespace MediaApp.API.Controllers
             };
 
             //Create Key
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
+            var key = new SymmetricSecurityKey(Encoding.UTF8
+                .GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             //use above key to create credentials by hashing
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
