@@ -93,11 +93,7 @@ namespace MediaApp.API.Migrations
 
                     b.Property<string>("Url");
 
-<<<<<<< HEAD
                     b.Property<int>("UserId");
-=======
-                    b.Property<int?>("UserId");
->>>>>>> dee768692accf2ecb10ccfe68852ce0226940bbe
 
                     b.HasKey("ID");
 
@@ -106,27 +102,12 @@ namespace MediaApp.API.Migrations
                     b.ToTable("Videos");
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("MediaApp.API.Models.Video", b =>
                 {
                     b.HasOne("MediaApp.API.Models.User", "User")
                         .WithMany("Videos")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-=======
-            modelBuilder.Entity("MediaApp.API.Models.Photo", b =>
-                {
-                    b.HasOne("MediaApp.API.Models.User")
-                        .WithMany("Photos")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("MediaApp.API.Models.Video", b =>
-                {
-                    b.HasOne("MediaApp.API.Models.User")
-                        .WithMany("Videos")
-                        .HasForeignKey("UserId");
->>>>>>> dee768692accf2ecb10ccfe68852ce0226940bbe
                 });
 #pragma warning restore 612, 618
         }
