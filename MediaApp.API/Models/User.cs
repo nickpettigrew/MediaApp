@@ -20,5 +20,6 @@ namespace MediaApp.API.Models
         public DateTime DateAdded { get; set; }
         public DateTime LastUploaded { get; set; }
         public ICollection<Video> Videos { get; set; }
+        public ICollection<Photo> Photos { get; set; }
     }
 }

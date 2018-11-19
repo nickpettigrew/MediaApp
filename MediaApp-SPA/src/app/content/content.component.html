@@ -1,3 +1,16 @@
-<p>
-  content works!
-</p>
+<div class="card mb-4">
+    <div class="card-vid-wrapper">
+      <video class="card-vid-top" src="/src/assets/GOY.mp4" width="800" height="500" controls></video>
+      <ul class="list-inline member-icons animate text-center">
+        <li class="list-inline-item"><button class="btn btn-primary"><i class="fa fa-film"></i></button></li>
+        <li class="list-inline-item"><button class="btn btn-primary"><a href="/src/assets/GOY.mp4" download><i class="fa fa-download"></i></a></button></li>
+        <li class="list-inline-item"><button class="btn btn-primary"><i class="fa fa-envelope"></i></button></li>
+      </ul>
+    </div>
+    <div class="card-body p-1">
+      <h6 class="card-title text-center mb-1"><i class="fa fa-user"></i>
+      {{user.username}}, {{user.contactName}}
+    </h6>
+    <p class="card-text text-muted text-center">{{user.summary}}</p>
+    </div>
+  </div>

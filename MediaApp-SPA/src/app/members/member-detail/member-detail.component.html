@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{user?.photoURL}}" alt="{{user.contactName}}">
+        <div class="card-body">
+          <div>
+            <strong>Video Description:</strong>
+              <p>{{video?.description}}</p>
+          </div>
+          <div>
+              <strong>Date Added:</strong>
+                <p>{{video?.dateAdded}}</p>
+            </div>
+            <div>
+                <strong>Produced By:</strong>
+                  <p>{{video?.producedBy}}</p>
+              </div>
+        </div>
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="btn btn-primary w-100">Download</button>
+            <button class="btn btn-success w-100">Message</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabser=t">
+        <tab heading="About {{user.businessName}}">
+          <h4>Best Contact</h4>
+          <p>{{user?.contactName}}</p>
+          <h4>Industry</h4>
+          <p>{{user?.industry}}</p>
+          <h4>Summary</h4>
+          <p>{{user?.summary}}</p>
+        </tab>
+        <tab heading="Current Campaign">
+            <h4>Sample Campaign</h4>
+            <p>Campaign descriptions will go here</p>
+        </tab>
+        <tab heading="Photos">
+            <h4>Photos</h4>
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        </tab>
+        <tab heading="Feedback">
+            <h4>Feedback</h4>
+            <p>Feedback will go here</p>
+        </tab>
+        </tabset>
+        </div>
+    </div>
+  </div>
+</div>

@@ -29,13 +29,13 @@ namespace MediaApp.API.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("ID");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Photos");
+                    b.ToTable("Photo");
                 });
 
             modelBuilder.Entity("MediaApp.API.Models.User", b =>
@@ -89,6 +89,8 @@ namespace MediaApp.API.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("FilmedBy");
+
                     b.Property<bool>("IsFavorite");
 
                     b.Property<string>("Url");
@@ -100,6 +102,14 @@ namespace MediaApp.API.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Videos");
+                });
+
+            modelBuilder.Entity("MediaApp.API.Models.Photo", b =>
+                {
+                    b.HasOne("MediaApp.API.Models.User", "User")
+                        .WithMany("Photos")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("MediaApp.API.Models.Video", b =>
