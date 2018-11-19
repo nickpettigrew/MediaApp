@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
-import { Resolve, Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AlertifyService } from '../_services/alertify.service';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-@Injectable ()
+@Injectable()
 export class MemberListResolver implements Resolve<User[]> {
     constructor(private userService: UserService, private router: Router,
         private alertify: AlertifyService) {}
@@ -14,7 +14,7 @@ export class MemberListResolver implements Resolve<User[]> {
     resolve(route: ActivatedRouteSnapshot): Observable<User[]> {
         return this.userService.getUsers().pipe(
             catchError(error => {
-                this.alertify.error('Problem retrieivng data');
+                this.alertify.error('Problem retrieving data');
                 this.router.navigate(['/home']);
                 return of(null);
             })

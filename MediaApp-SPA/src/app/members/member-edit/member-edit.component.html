@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1>{{user.username}}'s Profile</h1>
+    </div>
+    <div class="col-sm-8">
+      <div class="alert alert-info">
+        <p><strong>Information:</strong>You have made changes. Any unsaved changes will be lost!</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{user?.photoURL}}" alt="{{user.contactName}}">
+        <div class="card-body">
+          <div>
+            <strong>Video Description:</strong>
+              <p>{{video?.description}}</p>
+          </div>
+          <div>
+              <strong>Date Added:</strong>
+                <p>{{video?.dateAdded}}</p>
+            </div>
+            <div>
+                <strong>Produced By:</strong>
+                  <p>{{video?.producedBy}}</p>
+              </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-success btn-block">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabser=t">
+        <tab heading="Edit Profiles">
+          <form>
+            <h4>Current Campaign Goals</h4>
+            <textarea name="Current Campaign" rows="6" class="form-control" [(ngModel)]="user.summary"></textarea>
+            <h4>Best Contact</h4>
+            <textarea name="Current Campaign" rows="6" class="form-control" [(ngModel)]="user.contactName"></textarea>
+          <div class="form-inline"></div>
+          </form>
+        </tab>
+        <tab heading="Upload Photos">
+            <h4>Sample Campaign</h4>
+            <p>Campaign descriptions will go here</p>
+        </tab>
+        </tabset>
+        </div>
+    </div>
+  </div>
