@@ -18,6 +18,8 @@ namespace MediaApp.API.Helpers
                     opt.MapFrom(src => src.Videos.FirstOrDefault(p => p.IsFavorite).Url);
                 });
             CreateMap<Video, VideosForDetailedDto>();
+            CreateMap<Photo, PhotosForDetailedDto>();
+            CreateMap<UserForUpdateDto, User[]>();
         }
     }
 }

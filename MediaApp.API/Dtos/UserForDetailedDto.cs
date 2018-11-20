@@ -17,5 +17,7 @@ namespace MediaApp.API.Dtos
         public DateTime LastUploaded { get; set; }
         public string VideoUrl { get; set; }
         public ICollection<VideosForDetailedDto> Videos { get; set; }
+        public string PhotoUrl { get; set; }
+        public ICollection<PhotosForDetailedDto> Photos { get; set; }
     }
 }
