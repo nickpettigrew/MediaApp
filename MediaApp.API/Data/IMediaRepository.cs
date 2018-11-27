@@ -11,5 +11,7 @@ namespace MediaApp.API.Data
          Task<bool> SaveAll();
          Task<IEnumerable<User>> GetUsers();
          Task<User> GetUser(int id);
+         Task<Photo> GetPhoto(int id);
+         Task<Video> GetVideo(int id);
     }
 }
