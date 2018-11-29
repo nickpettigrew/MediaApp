@@ -20,7 +20,7 @@ namespace MediaApp.API.Migrations
 
             modelBuilder.Entity("MediaApp.API.Models.Photo", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateAdded");
@@ -33,7 +33,7 @@ namespace MediaApp.API.Migrations
 
                     b.Property<int>("UserId");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
@@ -84,7 +84,7 @@ namespace MediaApp.API.Migrations
 
             modelBuilder.Entity("MediaApp.API.Models.Video", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DateAdded");
@@ -99,7 +99,7 @@ namespace MediaApp.API.Migrations
 
                     b.Property<int>("UserId");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 

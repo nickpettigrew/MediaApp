@@ -48,7 +48,7 @@ namespace MediaApp.API.Migrations
                 name: "Videos",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Url = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -58,7 +58,7 @@ namespace MediaApp.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Videos", x => x.ID);
+                    table.PrimaryKey("PK_Videos", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Videos_Users_UserId",
                         column: x => x.UserId,
